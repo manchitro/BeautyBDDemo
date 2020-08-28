@@ -1,6 +1,6 @@
 <?php
-	$connection = mysqli_connect('127.0.0.1', 'root', '', 'testfb');
-	$tableName = "category";
+$connection = mysqli_connect('127.0.0.1', 'root', '', 'testfb');
+$tableName = "category";
 ?>
 
 <!doctype html>
@@ -18,6 +18,8 @@
 	<!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="album.css">
+
+	<link rel="icon" href="favicon.png">
 
 	<style>
 		.bd-placeholder-img {
@@ -64,7 +66,7 @@
 						<h4 class="text-white">Beauty BD Shop</h4>
 						<p class="text-muted">Twin Tower Shopping Complex, Shop # 121/A,
 							Ground Floor, Shantinagar
-							Dhaka, Bangladesh</p>
+						Dhaka, Bangladesh</p>
 					</div>
 					<div class="col-sm-4 offset-md-1 py-4">
 						<h4 class="text-white">Contact</h4>
@@ -109,46 +111,48 @@
 					<!-- Create all category blocks -->
 
 					<?php
-						$query = "SELECT * FROM $tableName";
-						$result = mysqli_query($connection, $query);
-						while ($row = mysqli_fetch_assoc($result)) {
-					?>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"> <image href="<?php echo $row['category_image'] ?>" height="100%" width="100%"/></svg>
-							<div class="card-body">
-								<!--  -->
-								<p class="card-text"><?= $row['category_name'] ?></p>
+					$query = "SELECT * FROM $tableName";
+					$result = mysqli_query($connection, $query);
+					while ($row = mysqli_fetch_assoc($result)) {
+						?>
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"> 
+									<image href="<?php echo $row['category_image'] ?>" height="100%" width="100%"/>
+									</svg>
+									<div class="card-body">
+										<!--  -->
+										<p class="card-text"><?= $row['category_name'] ?></p>
 
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='https://www.facebook.com/messages/t/1439803996096094'">Contact Seller</button>
+										<div class="d-flex justify-content-between align-items-center">
+											<div class="btn-group">
+												<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+												<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='https://www.facebook.com/messages/t/1439803996096094'">Contact Seller</button>
+											</div>
+											<small class="text-muted">9 mins</small>
+										</div>
 									</div>
-									<small class="text-muted">9 mins</small>
 								</div>
 							</div>
-						</div>
+
+						<?php } ?>
+
+
 					</div>
-
-				<?php } ?>
-
-
 				</div>
 			</div>
-		</div>
 
-	</main>
+		</main>
 
-	<footer class="text-muted">
-		<div class="container">
-			<p class="float-right">
-				<a href="#">Back to top</a>
-			</p>
-			<p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-			<p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-		</div>
-	</footer>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"><\/script>')</script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	</html>
+		<footer class="text-muted">
+			<div class="container">
+				<p class="float-right">
+					<a href="#">Back to top</a>
+				</p>
+				<p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+				<p>New to Bootstrap? <a href="https://getbootstrap.com/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+			</div>
+		</footer>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"><\/script>')</script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		</html>
