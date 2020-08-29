@@ -13,19 +13,15 @@
 	<?php
 	include 'header.php';
 	?>
+
 	<main role="main">
-		<section class="discount-product-slider">
-			<h1>Discount Products</h1>
-			<div class="slideproduct">
-			</div>
-		</section>
-		<h1 class="album-title">Categories</h1>
+		<h1 class="album-title">Products</h1>
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
 					<?php
 					require 'includes/dbh.inc.php';
-					$sql ="SELECT * FROM category";
+					$sql ="SELECT * FROM product";
 					$stmt = mysqli_stmt_init($conn);
 
 					if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -35,9 +31,9 @@
 					else{
 						mysqli_stmt_execute($stmt);
 						mysqli_stmt_store_result($stmt);
-						mysqli_stmt_bind_result($stmt, $categoryId, $categoryName, $categoryImage);
+						mysqli_stmt_bind_result($stmt, $productId, $productName, $price, $discount, $description, $productClicks, $productImage);
 						if(mysqli_stmt_num_rows($stmt) == 0){
-							echo "<p>You have no sections as of now. Use the add section button to create a section.";
+							echo "<p>No product found.</p>";
 						}
 						else{
 							while (mysqli_stmt_fetch($stmt)) {
@@ -45,10 +41,11 @@
 								<div class="col-md-4">
 									<div class="card mb-4 shadow-sm">
 										<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-											<image href="'.$categoryImage.'"" height="100%" width="100%" />
+											<image href="'.$productImage.'" height="100%" width="100%" />
 										</svg>
 										<div class="card-body">
-											<p class="card-text">'.$categoryName.'</p>
+											<p class="card-text">'.$productName.'</p>
+											<p class="card-text">'.$description.'</p>
 											<div class="d-flex justify-content-between align-items-center">
 												<div class="btn-group">
 													<button type="button" class="btn btn-sm btn-outline-secondary">View</button>

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 27, 2020 at 05:07 PM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Generation Time: Aug 29, 2020 at 08:04 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -41,7 +40,7 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`category_id`, `category_name`, `category_image`) VALUES
 (1, 'Sanitizer', 'https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png'),
 (2, 'sdjab', 'https://cdn.chaldal.net/_mpimage/savlon-instant-hand-sanitizer-200-ml?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D59406&q=low&v=1&w=600'),
-(3, 'dkwnd', 'fknqwflkn'),
+(3, 'dkwnd', 'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1024x576.png'),
 (4, 'faiwfnianf', 'anwgfawiwofn'),
 (5, 'fbnwlikfn', 'fklwnflqwnf');
 
@@ -52,22 +51,22 @@ INSERT INTO `category` (`category_id`, `category_name`, `category_image`) VALUES
 --
 
 CREATE TABLE `product` (
-  `product_id` int(20) NOT NULL,
-  `product_name` varchar(255) NOT NULL,
-  `product_price` int(20) NOT NULL,
-  `product_discount` int(20) DEFAULT NULL,
-  `product_description` text NOT NULL,
-  `product_clicks` int(20) NOT NULL,
-  `product_image` text NOT NULL,
-  `product_category_id` int(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `productId` int(20) NOT NULL,
+  `productName` varchar(50) NOT NULL,
+  `price` int(20) NOT NULL,
+  `discount` int(20) NOT NULL DEFAULT 0,
+  `description` text NOT NULL,
+  `productClicks` int(20) NOT NULL DEFAULT 0,
+  `productImage` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_discount`, `product_description`, `product_clicks`, `product_image`, `product_category_id`) VALUES
-(1, 'Savlon', 10, 10, 'jkabnfjk', 1, 'https://cdn.chaldal.net/_mpimage/savlon-instant-hand-sanitizer-200-ml?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D59406&q=low&v=1&w=600', 1);
+INSERT INTO `product` (`productId`, `productName`, `price`, `discount`, `description`, `productClicks`, `productImage`) VALUES
+(1, 'Shampoo', 150, 10, 'Chul dhoy eita diya', 0, 'https://images-na.ssl-images-amazon.com/images/I/71FMlrA8TiL._SL1500_.jpg'),
+(2, 'Conditioner', 200, 20, 'Chul dhoar por eita dey', 0, 'https://i5.walmartimages.com/asr/8ef368aa-a0e3-403b-9fee-0594c28d7eaf_1.1fbb21f502cacc17390b1c12c53a1dc0.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -83,8 +82,7 @@ ALTER TABLE `category`
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_id`),
-  ADD KEY `product_category_id` (`product_category_id`);
+  ADD PRIMARY KEY (`productId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -100,17 +98,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `product`
---
-ALTER TABLE `product`
-  ADD CONSTRAINT `fk1` FOREIGN KEY (`product_category_id`) REFERENCES `category` (`category_id`);
+  MODIFY `productId` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
