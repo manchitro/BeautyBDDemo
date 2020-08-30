@@ -20,8 +20,9 @@
 			<div class="container">
 				<div class="row">
 					<?php
+					$productID = $_GET['pid'];
 					require 'includes/dbh.inc.php';
-					$sql ="SELECT * FROM product where productId=1";
+					$sql ="SELECT * FROM product where productId = ?";
 					$stmt = mysqli_stmt_init($conn);
 
 					if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -29,9 +30,10 @@
 						exit();
 					}
 					else{
+						mysqli_stmt_bind_param($stmt, "s", $productID);
 						mysqli_stmt_execute($stmt);
 						mysqli_stmt_store_result($stmt);
-						mysqli_stmt_bind_result($stmt, $productId, $productName, $price, $discount, $description, $productClicks, $productImage);
+						mysqli_stmt_bind_result($stmt, $productId, $productName, $price, $discount, $description, $productClicks, $productImage, $categoryId);
 						if(mysqli_stmt_num_rows($stmt) == 0){
 							echo "<p>No product found.</p>";
 						}
@@ -43,10 +45,21 @@
 										<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
 											<image href="'.$productImage.'" height="100%" width="100%" />
 										</svg>
-										<div class="card-body">
-											<h1 class="card-text">'.$productName.'</h1>
-											<h4 class="card-text" id="price">'.$price.' BDT</h4>
-											<p class="card-text">'.$description.'</p>
+										<div class="card-body">';
+										if ($discount > 0){
+											echo '<p id="discount">Discount: '.$discount.'%</p>';
+										}
+										else{
+											echo '<br>';
+										}
+										echo '<h1 class="card-text">'.$productName.'</h1>';
+											if ($discount > 0){
+												echo '<h4 class="card-text" id="price"><s>'.$price.'</s> '.round($price -($price * $discount / 100)).' BDT</h4>';
+											}
+											else{
+												echo '<h4 class="card-text" id="price">'.$price.' BDT</h4>';
+											}
+											echo '<p class="card-text">'.$description.'</p>
 											<div class="d-flex justify-content-between align-items-center">
 												<div class="btn-group">
 													<button type="button" class="btn btn-lg btn-outline-secondary" onclick="location.href=\'https://www.facebook.com/messages/t/1439803996096094\'">Contact Seller</button>

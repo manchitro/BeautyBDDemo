@@ -31,7 +31,7 @@
 					else{
 						mysqli_stmt_execute($stmt);
 						mysqli_stmt_store_result($stmt);
-						mysqli_stmt_bind_result($stmt, $productId, $productName, $price, $discount, $description, $productClicks, $productImage);
+						mysqli_stmt_bind_result($stmt, $productId, $productName, $price, $discount, $description, $productClicks, $productImage, $categoryId);
 						if(mysqli_stmt_num_rows($stmt) == 0){
 							echo "<p>No product found.</p>";
 						}
@@ -40,15 +40,26 @@
 								echo '
 								<div class="col-md-4">
 									<div class="card mb-4 shadow-sm">
-										<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+										<svg class="bd-placeholder-img card-img-top py-4" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
 											<image href="'.$productImage.'" height="100%" width="100%" />
 										</svg>
-										<div class="card-body">
-											<p class="card-text">'.$productName.'</p>
-											<p class="card-text">'.$description.'</p>
-											<div class="d-flex justify-content-between align-items-center">
+										<div class="card-body">';
+										if ($discount > 0){
+											echo '<p id="discount">Discount: '.$discount.'%</p>';
+										}
+										else{
+											echo '<br>';
+										}
+											echo '<h4 class="card-text">'.$productName.'</h4>';
+											if ($discount > 0){
+												echo '<p class="card-text" id="price"><s>'.$price.'</s> '.round($price -($price * $discount / 100)).' BDT</p>';
+											}
+											else{
+												echo '<p class="card-text" id="price">'.$price.' BDT</p>';
+											}
+											echo '<div class="d-flex justify-content-between align-items-center">
 												<div class="btn-group">
-													<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'product.php\'">View</button>
+													<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'product.php?pid='.$productId.'\'">View</button>
 													<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'https://www.facebook.com/messages/t/1439803996096094\'">Contact Seller</button>
 												</div>
 											</div>

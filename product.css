@@ -76,3 +76,8 @@ footer p {
   font-weight: 400;
   
 }
+
+#discount{
+  margin: 0 !important;
+  color: #2ecc71;
+}
