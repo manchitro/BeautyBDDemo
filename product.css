@@ -1,0 +1,78 @@
+html{
+  scroll-behavior: smooth;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.discount-product-slider{
+  text-align: center;
+  margin: 2em 0;
+}
+
+.discount-product-slider h1{
+  font-weight: 300;
+  margin-bottom: 1em;
+}
+
+.slideproduct{
+  width: 100%;
+  height: 300px;
+  display: block;
+  margin: auto;
+  background-image: url('https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixlib=rb-1.2.1&w=1000&q=80');
+  background-size: 100% 100%;
+  box-shadow: 1px 2px 10px 5px black;
+  animation:slider 9s infinite linear;
+}
+
+@keyframes slider {
+  0%{background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-1.2.1&w=1000&q=80');}
+  35%{background-image: url('https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616__340.jpg');}
+  75{background-image: url('https://i.pinimg.com/736x/d9/f6/d2/d9f6d2bc09c60ec7b170a57be6c7b996.jpg');}
+}
+
+.album-title{
+  font-family: inherit;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  font-weight: 300;
+}
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.col-md-4 {
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  max-width: 70%;
+  margin: auto;
+}
+
+.btn {
+    /* Write stuff here to change the button properties */
+}
+
+#price {
+  font-weight: 400;
+  
+}
