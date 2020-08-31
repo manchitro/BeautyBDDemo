@@ -51,7 +51,7 @@
 											<p class="card-text">'.$categoryName.'</p>
 											<div class="d-flex justify-content-between align-items-center">
 												<div class="btn-group">
-													<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+													<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'product_list.php?cid='.$categoryId.'\'">View</button>
 													<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'https://www.facebook.com/messages/t/1439803996096094\'">Contact Seller</button>
 												</div>
 											</div>

@@ -1,3 +1,30 @@
+<?php
+	require 'includes/dbh.inc.php';
+	$categoryID = $_GET['cid'];
+	$catName = "";
+	$sql ="SELECT * FROM category WHERE category_id = ?";
+	$stmt = mysqli_stmt_init($conn);
+
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+		echo "SQL Failed".mysqli_stmt_error($stmt);
+		exit();
+	}
+	else{
+		mysqli_stmt_bind_param($stmt, "i", $categoryID);
+		mysqli_stmt_execute($stmt);
+		mysqli_stmt_store_result($stmt);
+		mysqli_stmt_bind_result($stmt, $categoryId, $categoryName, $categoryImage);
+		if(mysqli_stmt_num_rows($stmt) == 0){
+			echo "<p>No product found.</p>";
+		}
+		else{
+			while (mysqli_stmt_fetch($stmt)) {
+				$catName = $categoryName;
+			}
+		}
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,13 +42,13 @@
 	?>
 
 	<main role="main">
-		<h1 class="album-title">Products</h1>
+		<h1 class="album-title"><?php echo $catName; ?></h1>
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">
 					<?php
-					require 'includes/dbh.inc.php';
-					$sql ="SELECT * FROM product";
+
+					$sql ="SELECT * FROM product WHERE categoryId = ?";
 					$stmt = mysqli_stmt_init($conn);
 
 					if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -29,6 +56,7 @@
 						exit();
 					}
 					else{
+						mysqli_stmt_bind_param($stmt, "s", $categoryID);
 						mysqli_stmt_execute($stmt);
 						mysqli_stmt_store_result($stmt);
 						mysqli_stmt_bind_result($stmt, $productId, $productName, $price, $discount, $description, $productClicks, $productImage, $categoryId);

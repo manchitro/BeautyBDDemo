@@ -1,3 +1,9 @@
+<?php
+if(!isset($_GET['pid'])){
+	header('location: product_list.php');
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

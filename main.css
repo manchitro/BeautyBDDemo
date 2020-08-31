@@ -28,8 +28,8 @@ html{
 }
 
 .slideproduct{
-  width: 100%;
-  height: 300px;
+  width: 50%;
+  height: 50vh;
   display: block;
   margin: auto;
   background-image: url('https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixlib=rb-1.2.1&w=1000&q=80');
