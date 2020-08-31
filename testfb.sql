@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2020 at 02:24 PM
+-- Generation Time: Aug 31, 2020 at 05:36 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -38,9 +38,9 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `category_name`, `category_image`) VALUES
-(1, 'Sanitizer', 'https://mdn.mozillademos.org/files/6457/mdn_logo_only_color.png'),
-(2, 'sdjab', 'https://cdn.chaldal.net/_mpimage/savlon-instant-hand-sanitizer-200-ml?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D59406&q=low&v=1&w=600'),
-(3, 'dkwnd', 'https://www.salonlfc.com/wp-content/uploads/2018/01/image-not-found-1024x576.png'),
+(1, 'Hair', 'https://www.productbestreviews.com/wp-content/uploads/2018/10/The-Best-Hair-Loss-Products.jpg'),
+(2, 'Face', 'https://cdn2.stylecraze.com/wp-content/uploads/2013/03/1290-Best-Face-Makeup-Products-Available-In-India-%E2%80%93-Our-Top-10-iStock-510481420.jpg'),
+(3, 'Body', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-body-lotion-moisturizer-cream-1562695782.png?crop=0.502xw:1.00xh;0.280xw,0&resize=640:*'),
 (4, 'faiwfnianf', 'anwgfawiwofn'),
 (5, 'fbnwlikfn', 'fklwnflqwnf');
 
@@ -68,7 +68,7 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`productId`, `productName`, `price`, `discount`, `description`, `productClicks`, `productImage`, `categoryId`) VALUES
 (1, 'Shampoo', 150, 10, 'Chul dhoy eita diya', 0, 'https://images-na.ssl-images-amazon.com/images/I/71FMlrA8TiL._SL1500_.jpg', 1),
 (2, 'Conditioner', 101, 3, 'Chul dhoar por eita dey', 0, 'https://i5.walmartimages.com/asr/8ef368aa-a0e3-403b-9fee-0594c28d7eaf_1.1fbb21f502cacc17390b1c12c53a1dc0.jpeg', 1),
-(3, 'Cream', 150, 0, 'Mukhe makhe', 0, 'https://cdn.cultbeauty.co.uk/slots-img/frefre005_fresh_rosedeephydration_15ml_2_1560x1960-0jsd5jpg', 1);
+(3, 'Cream', 150, 0, 'Mukhe makhe', 0, 'https://cdn.cultbeauty.co.uk/slots-img/frefre005_fresh_rosedeephydration_15ml_2_1560x1960-0jsd5jpg', 2);
 
 --
 -- Indexes for dumped tables
