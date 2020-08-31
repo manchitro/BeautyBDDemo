@@ -15,9 +15,58 @@
 	?>
 	<main role="main">
 		<section class="discount-product-slider">
-			<h1>Discount Products</h1>
-			<div class="slideproduct">
-			</div>
+			<?php
+			require 'includes/dbh.inc.php';
+			$sql ="SELECT * FROM product where discount > 0";
+			$stmt = mysqli_stmt_init($conn);
+
+			if (!mysqli_stmt_prepare($stmt, $sql)) {
+				echo "SQL Failed".mysqli_stmt_error($stmt);
+				exit();
+			}
+			else{
+				mysqli_stmt_execute($stmt);
+				mysqli_stmt_store_result($stmt);
+				mysqli_stmt_bind_result($stmt, $productId, $productName, $price, $discount, $description, $productClicks, $productImage, $categoryId);
+				echo '<h1>Discounted Products</h1>';
+				echo '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">';
+				echo '<ol class="carousel-indicators">';
+				for ($i=0; $i < mysqli_stmt_num_rows($stmt); $i++) { 
+					if ($i == 0) {
+						echo '<li data-target="#carouselExampleIndicators" class="bg-dark" data-slide-to="'.$i.'" class="active"></li>';
+					}
+					else{
+						echo '<li data-target="#carouselExampleIndicators" class="bg-dark" data-slide-to="'.$i.'"></li>';
+					}
+				}
+				echo '</ol>';
+				echo '<div class="carousel-inner">';
+				$index = 0;
+				while (mysqli_stmt_fetch($stmt)) {
+					if ($index == 0) {
+						echo '<div class="carousel-item active">';
+					}
+					else{
+						echo '<div class="carousel-item">';
+					}
+					echo '<h5>'.$discount.'% OFF</h5>';
+					echo '<img class="d-block w-50 m-auto" role="button" src="'.$productImage.'" onclick="window.open(\'product.php?pid='.$productId.'\', \'_blank\')">';
+					echo '</div>';
+					$index++;
+				}
+				echo '</div>';
+				echo '
+				<a class="carousel-control-prev bg-dark" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next bg-dark" href="#carouselExampleIndicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+				</div>';
+			}
+			?>		
 		</section>
 		<h1 class="album-title">Categories</h1>
 		<div class="album py-5 bg-light">
@@ -52,7 +101,7 @@
 											<div class="d-flex justify-content-between align-items-center">
 												<div class="btn-group">
 													<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'product_list.php?cid='.$categoryId.'\'">View</button>
-													<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href=\'https://www.facebook.com/messages/t/1439803996096094\'">Contact Seller</button>
+													<button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.open(\'https://www.facebook.com/messages/t/1439803996096094\', \'_blank\')">Contact Seller</button>
 												</div>
 											</div>
 										</div>
