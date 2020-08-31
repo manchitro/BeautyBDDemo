@@ -28,7 +28,7 @@
 				mysqli_stmt_execute($stmt);
 				mysqli_stmt_store_result($stmt);
 				mysqli_stmt_bind_result($stmt, $productId, $productName, $price, $discount, $description, $productClicks, $productImage, $categoryId);
-				echo '<h1>Discounted Products</h1>';
+				echo '<h1><u>Discounted Products</u></h1>';
 				echo '<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">';
 				echo '<ol class="carousel-indicators">';
 				for ($i=0; $i < mysqli_stmt_num_rows($stmt); $i++) { 
@@ -68,7 +68,7 @@
 			}
 			?>		
 		</section>
-		<h1 class="album-title">Categories</h1>
+		<h1 class="album-title"><u>Categories</u></h1>
 		<div class="album py-5 bg-light">
 			<div class="container">
 				<div class="row">

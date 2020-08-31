@@ -17,10 +17,18 @@ html{
   }
 }
 
+@media (max-width: 768px) {
+  .discount-product-slider{
+    text-align: center;
+    margin: 2em auto;
+    min-width: 70vw;
+  }
+}
+
 .discount-product-slider{
   text-align: center;
   margin: 2em auto;
-  max-width: 70%;
+  max-width: 40vw;
 }
 
 .discount-product-slider h1{
