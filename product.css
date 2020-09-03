@@ -64,7 +64,6 @@ footer p {
 .col-md-4 {
   -ms-flex: 0 0 100%;
   flex: 0 0 100%;
-  max-width: 70%;
   margin: auto;
 }
 

@@ -98,7 +98,7 @@
 								<div class="col-md-4">
 									<div class="card mb-4 shadow-sm">
 										<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-											<image href="'.$categoryImage.'"" height="100%" width="100%" />
+											<image href="'.$categoryImage.'" height="100%" width="100%" onclick="location.href=\'product_list.php?cid='.$categoryId.'\'" role="button" />
 										</svg>
 										<div class="card-body">
 											<p class="card-text">'.$categoryName.'</p>

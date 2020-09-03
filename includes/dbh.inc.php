@@ -1,12 +1,12 @@
 <?php
-$servername = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "testfb";
+$servername = "cloudmysql.gotdns.ch";
+$dbusername = "asef";
+$dbpassword = "qZ{jDZSxycn+&y56";
+$dbname = "polapain";
 // $servername = "localhost";
-// $dbusername = "id14767558_fblivedemouser";
-// $dbpassword = "y4RV7d5J20wN";
-// $dbname = "id14767558_fblivedemodb";
+// $dbusername = "root";
+// $dbpassword = "";
+// $dbname = "testfb";
 
 $conn = mysqli_connect($servername,$dbusername,$dbpassword,$dbname);
 

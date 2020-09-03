@@ -40,7 +40,7 @@ if(!isset($_GET['pid'])){
 						exit();
 					}
 					else{
-						mysqli_stmt_bind_param($stmt, "s", $productID);
+						mysqli_stmt_bind_param($stmt, "i", $productID);
 						mysqli_stmt_execute($stmt);
 						mysqli_stmt_store_result($stmt);
 						mysqli_stmt_bind_result($stmt, $productId, $productName, $price, $discount, $description, $productClicks, $productImage, $categoryId);
@@ -50,7 +50,7 @@ if(!isset($_GET['pid'])){
 						else{
 							while (mysqli_stmt_fetch($stmt)) {
 								echo '
-								<div class="col-md-4">
+								<div class="col-lg-12">
 									<div class="card mb-4 pt-4 shadow-sm">
 										<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
 											<image href="'.$productImage.'" height="100%" width="100%" />
@@ -69,6 +69,8 @@ if(!isset($_GET['pid'])){
 											else{
 												echo '<h4 class="card-text" id="price">'.$price.' BDT</h4>';
 											}
+											echo '<br>';
+											echo '<h5>Product Description</h5>';
 											echo '<p class="card-text">'.$description.'</p>
 											<div class="d-flex justify-content-between align-items-center">
 												<div class="btn-group">
@@ -95,3 +97,17 @@ if(!isset($_GET['pid'])){
 
 <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"><\/script>')</script><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </html>
+
+<?php
+$sql ="UPDATE product SET productClicks = (productClicks + 1) where productId = ?";
+$stmt = mysqli_stmt_init($conn);
+
+if (!mysqli_stmt_prepare($stmt, $sql)) {
+	echo "SQL Failed".mysqli_stmt_error($stmt);
+	exit();
+}
+else{
+	mysqli_stmt_bind_param($stmt, "i", $productID);
+	mysqli_stmt_execute($stmt);
+}
+?>
