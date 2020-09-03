@@ -1,3 +1,7 @@
+<?php
+	require_once ('linkClick.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,4 +1,8 @@
 <?php
+	require_once ('linkClick.php');
+?>
+
+<?php
 	require 'includes/dbh.inc.php';
 	$categoryID = $_GET['cid'];
 	$catName = "";
