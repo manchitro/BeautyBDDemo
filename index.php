@@ -1,11 +1,18 @@
-<?php
-	require_once ('linkClick.php');
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<title>FB Live Demo</title>
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177287651-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-177287651-1');
+	</script>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="FB Live Online Item Catalog Demo">
