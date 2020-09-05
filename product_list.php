@@ -28,7 +28,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>FB Live Demo</title>
+	<title>Beauty BD</title>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177287651-1"></script>

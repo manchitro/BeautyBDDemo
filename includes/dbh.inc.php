@@ -1,14 +1,14 @@
 <?php
 // $servername = "cloudmysql.gotdns.ch";
+$servername = "cloudmysql.duckdns.org";
 // cloudmysql.duckdns.org
-
-// $dbusername = "asef";
-// $dbpassword = "qZ{jDZSxycn+&y56";
-// $dbname = "polapain";
-$servername = "localhost";
-$dbusername = "root";
-$dbpassword = "";
-$dbname = "testfb";
+$dbusername = "asef";
+$dbpassword = "qZ{jDZSxycn+&y56";
+$dbname = "polapain";
+// $servername = "localhost";
+// $dbusername = "root";
+// $dbpassword = "";
+// $dbname = "testfb";
 
 $conn = mysqli_connect($servername,$dbusername,$dbpassword,$dbname);
 
