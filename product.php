@@ -1,8 +1,4 @@
 <?php
-	require_once ('linkClick.php');
-?>
-
-<?php
 if(!isset($_GET['pid'])){
 	header('location: product_list.php');
 }
